@@ -2,6 +2,7 @@ const computerChoiceDisplay = document.getElementById("computer-choice")
 const yourChoice = document.getElementById("your-choice")
 const resultDisplay = document.getElementById("result")
 const possibleChoices = document.querySelectorAll("button")
+const Score = document.querySelector('#score')
 
 let userChoice
 let computerChoice
@@ -12,7 +13,20 @@ yourChoice.innerHTML = userChoice
 
 cpuChoice ()
 getResult()
+getScore()
 }))
+
+function getScore () {
+    let point = 0;
+   
+        if (result === 'you win!'){
+            point += 1;
+            Score.textContent = point
+            
+            
+        }
+    
+}
 
 function cpuChoice () {
     const randomNumber = Math.floor(Math.random() * 3) +1 // possibleChoices.length

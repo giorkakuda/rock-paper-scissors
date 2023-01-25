@@ -1,0 +1,51 @@
+body, html {
+            
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgba(2, 2, 100, 0.527);
+    height: 100vh;
+    width: 100vw;
+}
+div {
+    background-color: white;
+    width: 400px;
+    height: 300px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.507);
+    border-radius: 20px;
+    text-align: center;
+    
+    position:absolute;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+    
+}
+h1 {
+    padding: 20px;
+    margin: 20px;
+    background-color: blue;
+    border-radius: 10px;
+    color: white;
+}
+h2 {
+    text-align: left;
+    margin: 20px;
+}
+button {
+    width: auto;
+    border:0px;
+    padding: 10px 25px;
+    border-radius: 2px;
+}
+#rock{
+    background-color: darkgreen;
+    color: white;
+}
+#paper{
+    background-color: darkgoldenrod;
+    color: white;
+}
+#scissors{
+    background-color: darkblue;
+    color: white;
+}
