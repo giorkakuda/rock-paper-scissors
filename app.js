@@ -2,11 +2,17 @@ const computerChoiceDisplay = document.getElementById("computer-choice")
 const yourChoice = document.getElementById("your-choice")
 const resultDisplay = document.getElementById("result")
 const possibleChoices = document.querySelectorAll("button")
-const Score = document.querySelector('#score')
+const time = document.querySelector('#time')
+const scoreElement = document.getElementById('urscore')
+const scoreElement2 = document.getElementById('cpuscore')
 
-let userChoice
-let computerChoice
-let result
+let userChoice;
+let computerChoice;
+let result;
+let currentTime = 60;
+let timerId = null;
+let urscore = 0;
+let cpuscore = 0;
 
 possibleChoices.forEach(possibleChoice => possibleChoice.addEventListener('click', (e) => {userChoice = e.target.id
 yourChoice.innerHTML = userChoice
@@ -17,13 +23,13 @@ getScore()
 }))
 
 function getScore () {
-    let point = 0;
-   
+    
         if (result === 'you win!'){
-            point += 1;
-            Score.textContent = point
-            
-            
+            urscore++;
+        scoreElement.innerHTML = urscore;
+        } if (result === 'you lose!'){
+            cpuscore++;
+            scoreElement2.innerHTML = cpuscore;
         }
     
 }
@@ -31,39 +37,50 @@ function getScore () {
 function cpuChoice () {
     const randomNumber = Math.floor(Math.random() * 3) +1 // possibleChoices.length
     
-    if (randomNumber == 1) {
+    if (randomNumber === 1) {
         computerChoice = "rock"
     }
-    if (randomNumber == 2) {
+    if (randomNumber === 2) {
         computerChoice = "scissors"
     }
-    if (randomNumber == 3) {
+    if (randomNumber === 3) {
         computerChoice = "paper"
     }
     computerChoiceDisplay.innerHTML = computerChoice
 }
 
 function getResult() {
-    if (computerChoice == userChoice) {
+    if (computerChoice === userChoice) {
         result = 'its a draw!'
     }
-    if (computerChoice == 'rock' && userChoice == 'paper') {
+    if (computerChoice === 'rock' && userChoice === 'paper') {
         result = 'you win!'
     }
-    if (computerChoice == 'rock' && userChoice == 'scissors') {
+    if (computerChoice === 'rock' && userChoice === 'scissors') {
         result = 'you lose!'
     }
-    if (computerChoice == 'paper' && userChoice == 'scissors') {
+    if (computerChoice === 'paper' && userChoice === 'scissors') {
         result = 'you win!'
     }
-    if (computerChoice == 'paper' && userChoice == 'rock') {
+    if (computerChoice === 'paper' && userChoice === 'rock') {
         result = 'you lose!'
     }
-    if (computerChoice == 'scissors' && userChoice == 'rock') {
+    if (computerChoice === 'scissors' && userChoice === 'rock') {
         result = 'you win!'
     }
-    if (computerChoice == 'scissors' && userChoice == 'paper') {
+    if (computerChoice === 'scissors' && userChoice === 'paper') {
         result = 'you lose!'
     }
     resultDisplay.innerHTML = result
 }
+function countDown(){
+    currentTime--
+    time.textContent = currentTime
+
+    if (currentTime === 0){
+        clearInterval(countDownTimerId)
+        clearInterval(timerId)
+        alert('GAME OVER! your final score is '+ urscore)
+    }
+}
+let countDownTimerId = setInterval(countDown, 1000)
