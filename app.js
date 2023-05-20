@@ -38,37 +38,37 @@ function cpuChoice () {
     const randomNumber = Math.floor(Math.random() * 3) +1 // possibleChoices.length
     
     if (randomNumber === 1) {
-        computerChoice = "rock"
+        computerChoice = "👊"
     }
     if (randomNumber === 2) {
-        computerChoice = "scissors"
+        computerChoice = "✌"
     }
     if (randomNumber === 3) {
-        computerChoice = "paper"
+        computerChoice = "🖐"
     }
     computerChoiceDisplay.innerHTML = computerChoice
 }
 
 function getResult() {
     if (computerChoice === userChoice) {
-        result = 'its a draw!'
+        result = "It's a draw!"
     }
-    if (computerChoice === 'rock' && userChoice === 'paper') {
+    if (computerChoice === '👊' && userChoice === '🖐') {
         result = 'you win!'
     }
-    if (computerChoice === 'rock' && userChoice === 'scissors') {
+    if (computerChoice === '👊' && userChoice === '✌') {
         result = 'you lose!'
     }
-    if (computerChoice === 'paper' && userChoice === 'scissors') {
+    if (computerChoice === '🖐' && userChoice === '✌') {
         result = 'you win!'
     }
-    if (computerChoice === 'paper' && userChoice === 'rock') {
+    if (computerChoice === '🖐' && userChoice === '👊') {
         result = 'you lose!'
     }
-    if (computerChoice === 'scissors' && userChoice === 'rock') {
+    if (computerChoice === '✌' && userChoice === '👊') {
         result = 'you win!'
     }
-    if (computerChoice === 'scissors' && userChoice === 'paper') {
+    if (computerChoice === '✌' && userChoice === '🖐') {
         result = 'you lose!'
     }
     resultDisplay.innerHTML = result
@@ -80,7 +80,13 @@ function countDown(){
     if (currentTime === 0){
         clearInterval(countDownTimerId)
         clearInterval(timerId)
-        alert('GAME OVER! your final score is '+ urscore)
+        if (urscore > cpuscore)(
+            alert('GAME OVER! You win the match!')
+        ); else if (urscore < cpuscore){
+            alert('GAME OVER! You lose the match!')
+        }else {
+            alert("GAME OVER! It's a draw!")
+        }
     }
 }
 let countDownTimerId = setInterval(countDown, 1000)
